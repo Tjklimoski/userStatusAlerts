@@ -94,8 +94,10 @@ export default function AlertsCard({ auth }) {
   }, [breaches, payment, setAlerts]);
 
   return (
-    <div className="card mx-4 mb-4 bg-warning text-black">
-      <div className="card-header">Alerts</div>
+    <div
+      className={`card mx-4 mb-4 ${haveAlerts ? "bg-warning text-black" : ""}`}
+    >
+      {haveAlerts && <div className="card-header">Alerts</div>}
       <div className="card-body">
         {haveAlerts ? (
           <ul className="list-unstyled">
@@ -107,7 +109,7 @@ export default function AlertsCard({ auth }) {
             ))}
           </ul>
         ) : (
-          <p>No alerts</p>
+          <p className="mb-0">No alerts</p>
         )}
       </div>
     </div>

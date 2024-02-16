@@ -1,4 +1,9 @@
+import { useState } from "react";
+
 export default function AlertsCard({ auth }) {
+  // An array to hold the JSX of different alerts to render
+  const [alerts, setAlerts] = useState([]);
+
   return (
     <div className="card mx-4 mb-4 bg-warning text-black">
       <div className="card-header">Alerts</div>

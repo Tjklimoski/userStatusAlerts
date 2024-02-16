@@ -11,10 +11,10 @@ export default function App() {
       <nav className="navbar bg-body-tertiary">
         <div className="container-fluid">
           <a className="navbar-brand">Site Logo</a>
-          {auth && <NavItems />}
+          {auth.user && <NavItems />}
         </div>
       </nav>
-      {auth ? <Dashboard /> : <LoginForm />}
+      {auth.user ? <Dashboard /> : <LoginForm setAuth={setAuth} />}
     </>
   );
 }

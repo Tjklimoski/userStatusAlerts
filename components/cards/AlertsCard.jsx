@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { formatDateTime } from "../../util/dateFormatter.js";
+import PaymentAlert from "../alerts/PaymentAlert.jsx";
 
 const ALERT_NAMES = {
   breaches: "breaches_alert",
@@ -71,19 +72,11 @@ export default function AlertsCard({ auth }) {
       const payment_alert = {
         name,
         jsx: (
-          <section>
-            <h3>Late Payment</h3>
-            <div>{payment}</div>
-            <div className="mt-2">
-              <button
-                className="btn btn-secondary"
-                onClick={handleDismiss}
-                value={name}
-              >
-                Dismiss
-              </button>
-            </div>
-          </section>
+          <PaymentAlert
+            metadata={payment}
+            name={name}
+            onDismiss={handleDismiss}
+          />
         ),
       };
 

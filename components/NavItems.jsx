@@ -1,4 +1,8 @@
-export default function NavItems() {
+export default function NavItems({ setAuth }) {
+  function handleLogout() {
+    setAuth({});
+  }
+
   return (
     <ul className="nav">
       <li className="nav-item">
@@ -13,10 +17,7 @@ export default function NavItems() {
       </li>
       {/* add ms-2 to button li to maintain visual spacing */}
       <li className="nav-item ms-2">
-        <button
-          className="btn btn-primary"
-          onClick={() => console.log("click")}
-        >
+        <button className="btn btn-primary" onClick={handleLogout}>
           Logout
         </button>
       </li>

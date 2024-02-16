@@ -8,7 +8,7 @@ export default function Dashboard({ auth }) {
         <h1 className="me-4">{auth.user.name}&apos;s Dashboard </h1>
         <span className="fw-light">Jan 5, 2024</span>
       </header>
-      <AlertsCard />
+      <AlertsCard auth={auth} />
       <TasksCard />
     </div>
   );

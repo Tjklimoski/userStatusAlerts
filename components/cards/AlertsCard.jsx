@@ -1,4 +1,4 @@
-export default function AlertsCard() {
+export default function AlertsCard({ auth }) {
   return (
     <div className="card mx-4 mb-4 bg-warning text-black">
       <div className="card-header">Alerts</div>

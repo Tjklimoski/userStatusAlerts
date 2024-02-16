@@ -28,39 +28,38 @@ export default function AlertsCard({ auth }) {
       const breaches_alert = {
         name,
         jsx: (
-          <li key={name}>
-            <div>
-              <span>
-                Your password has been found to be compromised across multiple
-                sites:
-              </span>
-              <ul className="list-unstyled my-2">
-                {breaches.map(breach => (
-                  <li key={breach.date + breach.site}>
-                    - <span>{formatDateTime(breach.date)}</span> - {breach.site}
-                  </li>
-                ))}
-              </ul>
-              <span>
-                At this time your account with us has not been breached. We
-                recommend you take immediate action to prevent losing access to
-                your account. Please change your password as soon as possible to
-                maintain access to your account.
-              </span>
-              <div className="mt-2">
-                <button className="btn btn-secondary me-2">
-                  Change your password
-                </button>
-                <button
-                  className="btn btn-secondary"
-                  onClick={handleDismiss}
-                  value={name}
-                >
-                  Dismiss
-                </button>
-              </div>
+          <section>
+            <h3>Password compromised</h3>
+            <span>
+              Your password has been found to be compromised across multiple
+              sites:
+            </span>
+            <ul className="list-unstyled my-2">
+              {breaches.map(breach => (
+                <li key={breach.date + breach.site}>
+                  - <span>{formatDateTime(breach.date)}</span> - {breach.site}
+                </li>
+              ))}
+            </ul>
+            <span>
+              At this time your account with us has not been breached. We
+              recommend you take immediate action to prevent losing access to
+              your account. Please change your password as soon as possible to
+              maintain access to your account.
+            </span>
+            <div className="mt-2">
+              <button className="btn btn-secondary me-2">
+                Change your password
+              </button>
+              <button
+                className="btn btn-secondary"
+                onClick={handleDismiss}
+                value={name}
+              >
+                Dismiss
+              </button>
             </div>
-          </li>
+          </section>
         ),
       };
 
@@ -72,7 +71,8 @@ export default function AlertsCard({ auth }) {
       const payment_alert = {
         name,
         jsx: (
-          <li key={name}>
+          <section>
+            <h3>Late Payment</h3>
             <div>{payment}</div>
             <div className="mt-2">
               <button
@@ -83,7 +83,7 @@ export default function AlertsCard({ auth }) {
                 Dismiss
               </button>
             </div>
-          </li>
+          </section>
         ),
       };
 
@@ -103,10 +103,11 @@ export default function AlertsCard({ auth }) {
         {haveAlerts ? (
           <ul className="list-unstyled">
             {alerts.map((alert, i) => (
-              <>
+              <li key={alert.name}>
                 {alert.jsx}
+                {/* Add horizontal line between each alert: */}
                 {i !== alerts.length - 1 && <hr />}
-              </>
+              </li>
             ))}
           </ul>
         ) : (

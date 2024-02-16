@@ -9,7 +9,7 @@ export default function App() {
   return (
     <>
       <nav className="navbar bg-body-tertiary">
-        <div className="container-fluid">
+        <div className="container-xxl">
           <a className="navbar-brand">Site Logo</a>
           {auth.user && <NavItems />}
         </div>

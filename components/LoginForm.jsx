@@ -1,13 +1,17 @@
+import { useAuth } from "../context/AuthProvider";
+
 const ACCOUNT_STATUS = {
   safe: "safe",
   compromised: "compromised",
 };
 
-export default function LoginForm({ setAuth }) {
+export default function LoginForm() {
+  const { login } = useAuth();
+
   function handleLogin(e) {
     const status = e.target.value;
     if (status === ACCOUNT_STATUS.safe) {
-      setAuth({
+      login({
         user: {
           name: "Safe",
           photo: "http://url.com/id",
@@ -16,7 +20,7 @@ export default function LoginForm({ setAuth }) {
         meta: {},
       });
     } else {
-      setAuth({
+      login({
         user: {
           name: "Compromised",
           photo: "http://url.com/id",

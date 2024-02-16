@@ -1,7 +1,7 @@
-export default function NavItems({ setAuth }) {
-  function handleLogout() {
-    setAuth({});
-  }
+import { useAuth } from "../../context/AuthProvider";
+
+export default function NavItems() {
+  const { logout } = useAuth();
 
   return (
     <ul className="nav">
@@ -17,7 +17,7 @@ export default function NavItems({ setAuth }) {
       </li>
       {/* add ms-2 to button li to maintain visual spacing */}
       <li className="nav-item ms-2">
-        <button className="btn btn-primary" onClick={handleLogout}>
+        <button className="btn btn-primary" onClick={logout}>
           Logout
         </button>
       </li>

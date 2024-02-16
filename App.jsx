@@ -1,15 +1,15 @@
-import { useState } from "react";
 import Dashboard from "./components/Dashboard";
 import LoginForm from "./components/LoginForm";
 import Navbar from "./components/navigation/Navbar";
+import { useAuth } from "./context/AuthProvider";
 
 export default function App() {
-  const [auth, setAuth] = useState({});
+  const { auth } = useAuth();
 
   return (
     <>
-      <Navbar auth={auth} setAuth={setAuth} />
-      {auth.user ? <Dashboard auth={auth} /> : <LoginForm setAuth={setAuth} />}
+      <Navbar />
+      {auth.user ? <Dashboard /> : <LoginForm />}
     </>
   );
 }

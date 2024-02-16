@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import PaymentAlert from "../alerts/PaymentAlert.jsx";
 import CompromisedAlert from "../alerts/CompromisedAlert.jsx";
+import { useAuth } from "../../context/AuthProvider";
 
-export default function AlertsCard({ auth }) {
+export default function AlertsCard() {
+  const { auth } = useAuth();
+
   const breaches = auth.meta.breaches;
   const payment = auth.meta.payment;
 

@@ -9,7 +9,7 @@ export default function App() {
   return (
     <>
       <Navbar auth={auth} setAuth={setAuth} />
-      {auth.user ? <Dashboard /> : <LoginForm setAuth={setAuth} />}
+      {auth.user ? <Dashboard auth={auth} /> : <LoginForm setAuth={setAuth} />}
     </>
   );
 }

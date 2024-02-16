@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 
 const ALERT_NAMES = {
   breaches: "breaches_alert",
-  test: "test_alert",
+  payment: "payment_alert",
 };
 
 export default function AlertsCard({ auth }) {
   const breaches = auth.meta.breaches;
+  const payment = auth.meta.payment;
+
   // An array to hold the JSX of different alerts to render
   const [alerts, setAlerts] = useState([]);
 
@@ -50,7 +52,7 @@ export default function AlertsCard({ auth }) {
                 <button
                   className="btn btn-secondary"
                   onClick={handleDismiss}
-                  value={ALERT_NAMES.breaches}
+                  value={name}
                 >
                   Dismiss
                 </button>
@@ -63,9 +65,32 @@ export default function AlertsCard({ auth }) {
       setAlerts(currentAlerts => [...currentAlerts, breaches_alert]);
     }
 
+    if (payment) {
+      const name = ALERT_NAMES.payment;
+      const payment_alert = {
+        name,
+        jsx: (
+          <li key={name}>
+            <div>{payment}</div>
+            <div className="mt-2">
+              <button
+                className="btn btn-secondary"
+                onClick={handleDismiss}
+                value={name}
+              >
+                Dismiss
+              </button>
+            </div>
+          </li>
+        ),
+      };
+
+      setAlerts(currentAlerts => [...currentAlerts, payment_alert]);
+    }
+
     // clean up when component unmounts. Clear alerts
     return () => setAlerts([]);
-  }, [breaches, setAlerts]);
+  }, [breaches, payment, setAlerts]);
 
   return (
     <div className="card mx-4 mb-4 bg-warning text-black">
@@ -79,7 +104,6 @@ export default function AlertsCard({ auth }) {
             </>
           ))}
         </ul>
-
         <p>No alerts</p>
       </div>
     </div>

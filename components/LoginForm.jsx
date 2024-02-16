@@ -28,6 +28,8 @@ export default function LoginForm({ setAuth }) {
             { date: "2024-01-24T09:30:55.146Z", site: "https://facebook.com" },
             { date: "2024-01-27T17:47:26.434Z", site: "https://spotify.com" },
           ],
+          payment:
+            "You have not payed your fee for the month. Please visit the payment center as soon as possible to resolve the issue.",
         },
       });
     }

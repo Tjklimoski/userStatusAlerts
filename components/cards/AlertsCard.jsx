@@ -89,7 +89,7 @@ export default function AlertsCard({ auth }) {
       setAlerts(currentAlerts => [...currentAlerts, payment_alert]);
     }
 
-    // clean up when component unmounts. Clear alerts
+    // clean up when component unmounts. Clear alerts.
     return () => setAlerts([]);
   }, [breaches, payment, setAlerts]);
 

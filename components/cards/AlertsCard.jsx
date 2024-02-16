@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { formatDateTime, today } from "../../util/dateFormatter.js";
+import { formatDateTime } from "../../util/dateFormatter.js";
 
 const ALERT_NAMES = {
   breaches: "breaches_alert",
@@ -10,7 +10,6 @@ export default function AlertsCard({ auth }) {
   const breaches = auth.meta.breaches;
   const payment = auth.meta.payment;
 
-  console.log("TODAY: ", today);
   // An array to hold the JSX of different alerts to render
   const [alerts, setAlerts] = useState([]);
   const haveAlerts = alerts.length !== 0;

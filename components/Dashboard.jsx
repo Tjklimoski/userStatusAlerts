@@ -1,4 +1,5 @@
 import TasksCard from "./cards/TasksCard";
+import AlertsCard from "./cards/AlertsCard";
 
 export default function Dashboard({ auth }) {
   return (
@@ -7,6 +8,7 @@ export default function Dashboard({ auth }) {
         <h1 className="me-4">{auth.user.name}&apos;s Dashboard </h1>
         <span className="fw-light">Jan 5, 2024</span>
       </header>
+      <AlertsCard />
       <TasksCard />
     </div>
   );

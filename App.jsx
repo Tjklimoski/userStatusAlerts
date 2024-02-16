@@ -11,7 +11,7 @@ export default function App() {
       <nav className="navbar bg-body-tertiary">
         <div className="container-xxl">
           <a className="navbar-brand">Site Logo</a>
-          {auth.user && <NavItems />}
+          {auth.user && <NavItems setAuth={setAuth} />}
         </div>
       </nav>
       {auth.user ? <Dashboard /> : <LoginForm setAuth={setAuth} />}

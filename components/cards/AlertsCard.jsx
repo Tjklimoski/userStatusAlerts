@@ -1,11 +1,6 @@
 import { useEffect, useState } from "react";
-import { formatDateTime } from "../../util/dateFormatter.js";
 import PaymentAlert from "../alerts/PaymentAlert.jsx";
-
-const ALERT_NAMES = {
-  breaches: "breaches_alert",
-  payment: "payment_alert",
-};
+import CompromisedAlert from "../alerts/CompromisedAlert.jsx";
 
 export default function AlertsCard({ auth }) {
   const breaches = auth.meta.breaches;
@@ -25,42 +20,15 @@ export default function AlertsCard({ auth }) {
   // use effect to only set alerts once
   useEffect(() => {
     if (breaches) {
-      const name = ALERT_NAMES.breaches;
+      const name = "breaches_alert";
       const breaches_alert = {
         name,
         jsx: (
-          <section>
-            <h3>Password compromised</h3>
-            <span>
-              Your password has been found to be compromised across multiple
-              sites:
-            </span>
-            <ul className="list-unstyled my-2">
-              {breaches.map(breach => (
-                <li key={breach.date + breach.site}>
-                  - <span>{formatDateTime(breach.date)}</span> - {breach.site}
-                </li>
-              ))}
-            </ul>
-            <span>
-              At this time your account with us has not been breached. We
-              recommend you take immediate action to prevent losing access to
-              your account. Please change your password as soon as possible to
-              maintain access to your account.
-            </span>
-            <div className="mt-2">
-              <button className="btn btn-secondary me-2">
-                Change your password
-              </button>
-              <button
-                className="btn btn-secondary"
-                onClick={handleDismiss}
-                value={name}
-              >
-                Dismiss
-              </button>
-            </div>
-          </section>
+          <CompromisedAlert
+            metadata={breaches}
+            name={name}
+            onDismiss={handleDismiss}
+          />
         ),
       };
 
@@ -68,7 +36,7 @@ export default function AlertsCard({ auth }) {
     }
 
     if (payment) {
-      const name = ALERT_NAMES.payment;
+      const name = "payment_alert";
       const payment_alert = {
         name,
         jsx: (

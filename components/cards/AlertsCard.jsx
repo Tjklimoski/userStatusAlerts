@@ -11,6 +11,7 @@ export default function AlertsCard({ auth }) {
 
   // An array to hold the JSX of different alerts to render
   const [alerts, setAlerts] = useState([]);
+  const haveAlerts = alerts.length !== 0;
 
   function handleDismiss(e) {
     const nameToDismiss = e.target.value;
@@ -96,15 +97,18 @@ export default function AlertsCard({ auth }) {
     <div className="card mx-4 mb-4 bg-warning text-black">
       <div className="card-header">Alerts</div>
       <div className="card-body">
-        <ul className="list-unstyled">
-          {alerts.map((alert, i) => (
-            <>
-              {alert.jsx}
-              {i !== alerts.length - 1 && <hr />}
-            </>
-          ))}
-        </ul>
-        <p>No alerts</p>
+        {haveAlerts ? (
+          <ul className="list-unstyled">
+            {alerts.map((alert, i) => (
+              <>
+                {alert.jsx}
+                {i !== alerts.length - 1 && <hr />}
+              </>
+            ))}
+          </ul>
+        ) : (
+          <p>No alerts</p>
+        )}
       </div>
     </div>
   );

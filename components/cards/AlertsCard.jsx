@@ -19,8 +19,8 @@ export default function AlertsCard({ auth }) {
 
   // use effect to only set alerts once
   useEffect(() => {
-    const name = ALERT_NAMES.breaches;
     if (breaches) {
+      const name = ALERT_NAMES.breaches;
       const breaches_alert = {
         name,
         jsx: (
@@ -71,7 +71,14 @@ export default function AlertsCard({ auth }) {
     <div className="card mx-4 mb-4 bg-warning text-black">
       <div className="card-header">Alerts</div>
       <div className="card-body">
-        <ul className="list-unstyled">{alerts.map(alert => alert.jsx)}</ul>
+        <ul className="list-unstyled">
+          {alerts.map((alert, i) => (
+            <>
+              {alert.jsx}
+              {i !== alerts.length - 1 && <hr />}
+            </>
+          ))}
+        </ul>
 
         <p>No alerts</p>
       </div>
